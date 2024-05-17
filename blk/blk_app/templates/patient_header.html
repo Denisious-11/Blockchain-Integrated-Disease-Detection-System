@@ -1,0 +1,31 @@
+ {% load static %}
+ <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="" class="logo">
+                      <!-- <h3>Blockchain SCM<em></em></h3> -->
+                      <h3 style="color: royalblue;">DataBlockz</h3>
+                      <!-- <img src="{% static 'images/cm_logo.png' %}" height="55" > -->
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="{% url 'show_home_patient' %}" class="active">Home</a></li>
+                        <li><a href="{% url 'display_test_page' %}">Test Page</a></li>
+                    </ul>
+                    
+                    <div class="border-button">
+                      <a href="{% url 'logout' %}" class="sign-in-up"><i class="fa fa-user"></i> Logout</a>
+                    </div>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>

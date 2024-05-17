@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="author" content="templatemo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>View Request Admin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-snapx-photography.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
+    <!-- Libraries Stylesheet -->
+    <script src="{% static 'js_1/jquery2.0.3.min.js' %}"></script>
+
+
+    <link rel="stylesheet" href="{% static 'datatable/jquery.dataTables.min.css' %}">
+    <script type="text/javascript" src="{% static 'datatable/jquery.dataTables.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'datatable/bootstable.min.js' %}"></script>
+
+    <script type="text/javascript">
+    
+        $(document).ready(function(){
+
+            $('#table').DataTable();
+        })
+    </script>
+
+    <style>
+        #table{background:lightblue ;color: black}
+        .a{background: lightblue;padding-left: 400px;}
+
+        #approve{background: green;border-radius: 12px;}
+        #reject{background: orange;border-radius: 12px;}
+        td:hover{background-color: lightpink;}
+        tr:hover{background-color:lightskyblue;}
+        #approve:hover{background-color: lightgreen;}
+        #reject:hover{background-color: red;}
+
+    </style>
+
+  </head>
+
+<body>
+
+
+  <!-- ***** Header Area Start ***** -->
+   {% include 'admin_header.html' %}
+  <!-- ***** Header Area End ***** -->
+  <h2 style="text-align: center; margin-top:150px;"><u>History</u></h2><br><br>
+
+        <div class='table-condensed container'>
+          <table class="table table-bordered b-t b-light" id="table">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Result</th>
+             </tr>
+            </thead>
+            <tbody>
+
+              {% for mykey,myvalue in req.items %}
+
+                  <tr>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        
+                        <td data-search="{{i.username}}" data-filer="{{i.username}}">{% for k1,v1 in myvalue.items %}{% if k1 == 'username' %} {{v1}} {% endif %}{% endfor %}<input type="text" name="username" id="username" value="{% for k1,v1 in myvalue.items %}{% if k1 == 'username' %} {{v1}} {% endif %}{% endfor %}" hidden></td>
+
+                        <td>{% for k1,v1 in myvalue.items %}{% if k1 == 'c_date' %} {{v1}} {% endif %}{% endfor %}<input type="text" name="c_date" value="{% for k1,v1 in myvalue.items %}{% if k1 == 'c_date' %} {{v1}} {% endif %}{% endfor %}" hidden></td>
+
+                        <td >{% for k1,v1 in myvalue.items %}{% if k1 == 'c_time' %} {{v1}} {% endif %}{% endfor %}<input type="text" name="c_time" value="{% for k1,v1 in myvalue.items %}{% if k1 == 'c_time' %} {{v1}} {% endif %}{% endfor %}" hidden></td>
+
+                        <td >{% for k1,v1 in myvalue.items %}{% if k1 == 'result' %} {{v1}} {% endif %}{% endfor %}<input type="text" name="result" value="{% for k1,v1 in myvalue.items %}{% if k1 == 'result' %} {{v1}} {% endif %}{% endfor %}" hidden></td>
+                    </form>
+                  </tr>
+
+                {% endfor %} 
+
+
+              
+            </tbody>
+          </table>
+        </div>
+        <div style="padding-top: 160px;"></div>
+  <!-- ***** Main Banner Area End ***** -->
+  
+  {% include 'admin_footer.html' %}
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+    <script src="{% static 'js_1/bootstrap.js' %}"></script>
+    <script src="{% static 'js_1/jquery.dcjqaccordion.2.7.js' %}"></script>
+    <script src="{% static 'js_1/scripts.js' %}"></script>
+    <script src="{% static 'js_1/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'js_1/jquery.nicescroll.js' %}"></script>
+    <script src="{% static 'js_1/jquery.scrollTo.js' %}"></script>
+
+  </body>
+</html>
